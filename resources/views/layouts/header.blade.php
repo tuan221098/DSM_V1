@@ -18,13 +18,13 @@
             </div>
             <div class="d-flex align-items-stretch flex-shrink-0">
                 <div class="d-flex align-items-center ms-1 ms-lg-3">
-{{--                    <div--}}
-{{--                        class="btn btn-icon btn-icon-muted btn-active-light btn-active-color-primary w-30px h-30px w-md-40px h-md-40px"--}}
-{{--                        data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">--}}
-{{--                        <span class="svg-icon svg-icon-1">--}}
-{{--                            {!! \App\Helper\CommonHelper::getSvg('media/icons/duotune/general/gen022.svg') !!}--}}
-{{--                        </span>--}}
-{{--                    </div>--}}
+                    {{--                    <div--}}
+                    {{--                        class="btn btn-icon btn-icon-muted btn-active-light btn-active-color-primary w-30px h-30px w-md-40px h-md-40px"--}}
+                    {{--                        data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">--}}
+                    {{--                        <span class="svg-icon svg-icon-1">--}}
+                    {{--                            {!! \App\Helper\CommonHelper::getSvg('media/icons/duotune/general/gen022.svg') !!}--}}
+                    {{--                        </span>--}}
+                    {{--                    </div>--}}
                     <div class="menu menu-sub menu-sub-dropdown menu-column w-350px w-lg-375px" data-kt-menu="true">
                         <!--begin::Heading-->
                         <div class="d-flex flex-column bgi-no-repeat rounded-top"
@@ -191,26 +191,29 @@
                                     <img alt="Logo" src="{{ asset('media/avatars/300-1.jpg') }}"/>
                                 </div>
                                 <div class="d-flex flex-column">
-                                    <div class="fw-bolder d-flex align-items-center fs-5">Max Smith
-                                        <span class="badge badge-light-success fw-bolder fs-8 px-2 py-1 ms-2">Pro</span>
+                                    <div class="fw-bolder d-flex align-items-center fs-5">
+                                        {{ $user_global->getFullName() }}
                                     </div>
-                                    <a href="#" class="fw-bold text-muted text-hover-primary fs-7">max@kt.com</a>
+                                    <a href="#" class="fw-bold text-muted text-hover-primary fs-7">
+                                        {{ $user_global->email }}
+                                    </a>
                                 </div>
                             </div>
                         </div>
 
                         <div class="separator my-2"></div>
                         <div class="menu-item px-5">
-                            <a href="" class="menu-link px-5">My Profile</a>
+                            <a href="#" class="menu-link px-5">@lang('menu.account.my_profile')</a>
                         </div>
                         <div class="menu-item px-5 my-1">
-                            <a href="" class="menu-link px-5">Account Settings</a>
+                            <a href="#" class="menu-link px-5">Account Settings</a>
                         </div>
                         <div class="dropdown-divider"></div>
                         <div class="menu-item px-5">
                             <form action="{!! route('logout') !!}" method="POST">
                                 {!! csrf_field() !!}
-                                <button class="dropdown-item text-danger px-5" type="submit">Sign Out</button>
+                                <button type="submit" class="d-none" id="btn-sign-out"></button>
+                                <a href="javascript:void(0)" onclick="$('#btn-sign-out').click()" class="menu-link text-hover-danger px-5">@lang('menu.auth.sign_out')</a>
                             </form>
                         </div>
 

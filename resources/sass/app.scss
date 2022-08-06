@@ -1,2 +1,9 @@
-@import "bootstrap";
 @import "~toastr/build/toastr.min.css";
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+// Datatables
+@import "./theme/datatables/datatables.bundle.css";
+// Sweetalert 2
+@import '~sweetalert2/dist/sweetalert2.css';
+// Toastr
+@import '~toastr/toastr';

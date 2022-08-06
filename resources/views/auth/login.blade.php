@@ -18,7 +18,7 @@
                     <div class="fv-row mb-10">
                         <div class="d-flex flex-stack mb-2">
                             <label class="form-label fw-bolder text-dark fs-6 mb-0">@lang('validation.attributes.password')</label>
-                            <a href="" class="link-primary fs-6 fw-bolder">@lang('layout.label1.forgot_password')</a>
+                            <a href="" class="link-primary fs-6 fw-bolder">@lang('layout.labels.forgot_password')</a>
                         </div>
                         <input class="form-control form-control-lg form-control-solid" type="password" name="password" autocomplete="off" />
                     </div>

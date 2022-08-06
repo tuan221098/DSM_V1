@@ -15,17 +15,16 @@ class UserSeeder extends Seeder
         $users = [
             [
                 'username' => 'admin',
-                'name' => 'admin',
+                'first_name' => 'admin',
                 'password' => \Illuminate\Support\Facades\Hash::make('123456'),
                 'is_admin' => true,
-                'status' => 1
             ]
         ];
 
         foreach ($users as $user) {
             if (!User::query()->where('username', $user['username'])->exists()) {
                 User::create($user);
-                echo "Add username " . $user['username'] . " successful \n";
+                echo "Added username " . $user['username'] . " success \n";
             }
         }
     }

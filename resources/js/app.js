@@ -1,7 +1,12 @@
 require('./bootstrap');
-require('toastr');
+require('moment');
+window.toastr = require('toastr');
 
-require('sweetalert2');
-require('datatables.net');
-
+window.Swal = require('sweetalert2');
 require('jquery-validation');
+
+require('datatables.net-bs4');
+require('datatables.net-responsive-bs4');
+require('datatables.net-fixedcolumns-bs4');
+require('datatables.net-buttons-bs4');
+

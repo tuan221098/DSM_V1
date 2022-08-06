@@ -1,6 +1,6 @@
 const _flashUtils = {
     message: function (success, message) {
-        if (success == true) {
+        if (success) {
             _flashUtils.success(message);
         } else {
             _flashUtils.fail(message);

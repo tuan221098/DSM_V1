@@ -40,32 +40,33 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
     public function login(Request $request)
     {
-        $credentials=[
+        $credentials = [
             'username' => $request->username,
             'password' => $request->password,
         ];
         $user = User::query()->where('username', $credentials['username'])->first();
-        if(Auth::attempt($credentials)){
+        if (Auth::attempt($credentials)) {
 
             return response()->json([
-                'success'=>true,
-                'message'=>trans('auth.messages.login_success'),
+                'success' => true,
+                'message' => trans('auth.messages.login_success'),
             ]);
         }
         return response()->json([
-            'success'=>false,
-            'message'=>trans('auth.messages.login_fail'),
+            'success' => false,
+            'message' => trans('auth.messages.login_fail'),
         ]);
     }
+
     public function logout(Request $request)
     {
-
         if (Auth::check()) {
             Auth::logout();
-
         }
+
         return redirect()->route('login');
     }
 }
