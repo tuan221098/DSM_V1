@@ -35,7 +35,8 @@ class CategoryController extends Controller
         if ($request->status_search != '') {
             $query = $query->where('status', $request->status_search);
         }
-        $data = $query->select(['id', 'name', 'description', 'status'])->get();
+        $data = $query->orderByDesc('created_at')
+            ->select(['id', 'name', 'description', 'status'])->get();
         return DataTables::of($data)
             ->addIndexColumn()
             ->addColumn('status_name', function ($row) {
@@ -47,8 +48,7 @@ class CategoryController extends Controller
                 } else if ($row->status == config('constants.category_status.in_active')) {
                     return 'danger';
                 }
-            })
-            ->make(true);
+            })->make(true);
     }
 
     public function loadForm(Request $request)
@@ -75,13 +75,13 @@ class CategoryController extends Controller
         if ($result->id) {
             return response()->json([
                 'success' => true,
-                'messages' => trans('category.messages.create_success')
+                'message' => trans('category.messages.create_success')
             ]);
         }
 
         return response()->json([
             'success' => false,
-            'messages' => trans('category.messages.create_fail')
+            'message' => trans('category.messages.create_fail')
         ]);
     }
 
@@ -97,13 +97,13 @@ class CategoryController extends Controller
         if ($success) {
             return response()->json([
                 'success' => true,
-                'messages' => trans('category.messages.update_success')
+                'message' => trans('category.messages.update_success')
             ]);
         }
 
         return response()->json([
             'success' => false,
-            'messages' => trans('category.messages.update_fail')
+            'message' => trans('category.messages.update_fail')
         ]);
     }
 
@@ -115,13 +115,13 @@ class CategoryController extends Controller
         if ($success) {
             return response()->json([
                 'success' => true,
-                'messages' => trans('category.messages.delete_success')
+                'message' => trans('category.messages.delete_success')
             ]);
         }
 
         return response()->json([
             'success' => false,
-            'messages' => trans('category.messages.delete_fail')
+            'message' => trans('category.messages.delete_fail')
         ]);
     }
 

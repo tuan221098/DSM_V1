@@ -4,14 +4,16 @@
 
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">@lang('menu.products.category')</h3>
-            <div class="card-toolbar">
-                <button type="button" onclick="loadForm(null)" class="btn btn-primary">
-                    <span class="svg-icon svg-icon-2">
-                        {!! \App\Helper\CommonHelper::getSvg(config('constants.icon.create')) !!}
-                    </span>
-                    @lang('layout.buttons.create')
-                </button>
+            <div class="row">
+                <div class="col-md-6">
+                    <h5 class="d-flex align-middle">@lang('menu.products.category')</h5>
+                </div>
+                <div class="col-md-6 text-end">
+                    <button type="button" onclick="loadForm(null)" class="btn btn-primary">
+                        <i class="ri-add-line align-middle"></i>
+                        @lang('layout.buttons.create')
+                    </button>
+                </div>
             </div>
         </div>
         <div class="card-body">
@@ -32,10 +34,8 @@
                 <div class="form-group col-md-3">
                     <label class="col-md-12">&nbsp;</label>
                     <div class="col-md-12">
-                        <button class="btn btn-primary">
-                            <span class="svg-icon svg-icon-2">
-                                {!! \App\Helper\CommonHelper::getSvg(config('constants.icon.search')) !!}
-                            </span>
+                        <button class="btn btn-primary ">
+                            <i class="ri-search-line align-middle"></i>
                             @lang('layout.buttons.search')
                         </button>
                     </div>
@@ -43,15 +43,19 @@
             </div>
             {!! Form::close() !!}
 
-            <div class="table-responsive mt-15">
-                <table id="category-grid" class="table table-loading table-row-bordered gy-2">
+            <div class=" mt-5">
+                <table id="category-grid" class="table dt-responsive nowrap ">
                     <thead>
                     <tr>
                         <th data-table-order="true" data-table-class="align-middle text-center">#</th>
-                        <th data-table-name="name" data-table-class="align-middle">@lang('validation.attributes.category_name')</th>
-                        <th data-table-name="description" data-table-class="align-middle">@lang('validation.attributes.description')</th>
-                        <th data-table-status-badge="true" data-table-class="align-middle text-center">@lang('validation.attributes.status')</th>
-                        <th data-table-skip="true" data-table-class="align-middle" style="max-width: 175px;">@lang('layout.labels.action')</th>
+                        <th data-table-name="name"
+                            data-table-class="align-middle">@lang('validation.attributes.category_name')</th>
+                        <th data-table-name="description"
+                            data-table-class="align-middle">@lang('validation.attributes.description')</th>
+                        <th data-table-status-badge="true"
+                            data-table-class="align-middle text-center">@lang('validation.attributes.status')</th>
+                        <th data-table-skip="true" data-table-class="align-middle"
+                            style="max-width: 175px;">@lang('layout.labels.action')</th>
                     </tr>
                     </thead>
                     <tbody></tbody>
@@ -77,8 +81,6 @@
             storeUrl: '{!! route('categories.store') !!}',
             updateUrl: '{!! route('categories.update','ValId') !!}',
             destroyUrl: '{!! route('categories.destroy','ValId') !!}',
-            iconEdit: `{!! \App\Helper\CommonHelper::getSvg(config('constants.icon.edit')) !!}`,
-            iconDelete: `{!! \App\Helper\CommonHelper::getSvg(config('constants.icon.delete')) !!}`,
         }
     </script>
     <script src="{{ asset('js/pages/categories/index.js') }}"></script>

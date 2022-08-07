@@ -2,17 +2,18 @@
 return [
     'items' => [
         [
-            'icon' => 'media/icons/duotune/finance/fin001.svg',
+            'icon' => 'ri-home-3-line',
             'name' => 'Trang Chủ',
             'href' => '/',
         ],
         [
-            'icon' => 'media/icons/duotune/electronics/elc004.svg',
+            'icon' => 'ri-computer-line',
             'name' => 'Bán hàng',
             'href' => '/pos',
         ],
         [
-            'icon' => 'media/icons/duotune/ecommerce/ecm003.svg',
+            'key' => 'bills',
+            'icon' => 'ri-shopping-basket-2-line',
             'name' => 'Đơn hàng',
             'menu_items' =>
                 [
@@ -27,7 +28,8 @@ return [
                 ],
         ],
         [
-            'icon' => 'media/icons/duotune/abstract/abs027.svg',
+            'key' => 'products',
+            'icon' => 'ri-stack-line',
             'name' => 'Sản phẩm',
             'menu_items' => [
                 [
@@ -53,7 +55,8 @@ return [
             ],
         ],
         [
-            'icon' => 'media/icons/duotune/communication/com013.svg',
+            'key' => 'customers',
+            'icon' => 'ri-contacts-book-line',
             'name' => 'Khách hàng',
             'menu_items' => [
                 [
@@ -67,7 +70,8 @@ return [
             ],
         ],
         [
-            'icon' => 'media/icons/duotune/finance/fin010.svg',
+            'key' => 'cashbook',
+            'icon' => 'ri-file-list-3-line',
             'name' => 'Sổ quỹ',
             'menu_items' => [
                 [
@@ -81,7 +85,7 @@ return [
             ],
         ],
         [
-            'icon' => 'media/icons/duotune/graphs/gra004.svg',
+            'icon' => 'ri-pie-chart-line',
             'name' => 'Báo cáo',
             'menu_items' =>
                 [
@@ -108,7 +112,7 @@ return [
                 ],
         ],
         [
-            'icon' => 'media/icons/duotune/coding/cod009.svg',
+            'icon' => 'ri-equalizer-line',
             'name' => 'Cấu hình',
             'href' => '/settings'
         ],

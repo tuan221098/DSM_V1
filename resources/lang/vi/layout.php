@@ -2,6 +2,7 @@
 return [
     'buttons' => [
         'sign_in' => 'Đăng nhập',
+        'sign_out' => 'Đăng xuất',
         'create' => 'Thêm mới',
         'edit' => 'Sửa',
         'update' => 'Cập nhật',
@@ -16,6 +17,7 @@ return [
     'labels' => [
         'hi_sign_in' => 'Đăng nhập',
         'forgot_password' => 'Quên mật khẩu',
+        'remember_me' => 'Ghi nhớ đăng nhập',
         'action' => 'Chức năng',
         'create' => 'Thêm mới',
         'update' => 'Cập nhật',

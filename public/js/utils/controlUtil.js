@@ -3,6 +3,25 @@ $.ajaxSetup({
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
 });
+$(function () {
+    const eleMenuAccordionLink = $('.menu-accordion');
+    const eleMenuLink = $('.menu-accordion .menu-sub-accordion .menu-link');
+    eleMenuAccordionLink.each(function () {
+        const eleMenu = $(this);
+        const keyMenu = eleMenu.data('menu-key');
+
+        eleMenuLink.each(function () {
+            if ($(this).hasClass('active')) {
+                const keySubMenu = $(this).data('menu-key');
+                if (keyMenu === keySubMenu.substring(0, keySubMenu.indexOf('.'))) {
+                    eleMenu.addClass('show');
+                }
+            }
+
+        });
+    })
+
+})
 const _controlUtils = {
     configSweetDeleteAlert: function () {
         return {
@@ -52,8 +71,8 @@ const _controlUtils = {
                 infoPostFix: '',
                 thousands: '',
                 lengthMenu: 'Hiển thị _MENU_ bản ghi',
-                loadingRecords: '<div class="table-loading-message">Loading...</div>',
-                processing: '<div class="table-loading-message">Loading...</div>',
+                loadingRecords: '<div class="table-loading-message">Đang xử lý...</div>',
+                processing: '<div class="table-loading-message">Đang xử lý...</div>',
                 search: 'Tìm Kiếm: ',
                 zeroRecords: 'Không tìm thấy dữ liệu phù hợp',
                 paginate: {
@@ -170,7 +189,7 @@ const _controlUtils = {
                     'class': controlClass,
                     'autoWidth': true,
                     'render': function (data, type, full, meta) {
-                        return `<span class="badge badge-${full.status_badge} mr-2"> ${full.status_name}</span>`;
+                        return `<span style="font-size: 100%" class="badge bg-${full.status_badge} mr-2"> ${full.status_name}</span>`;
                     },
                 });
             } else if (typeBadge) {
@@ -178,7 +197,7 @@ const _controlUtils = {
                     'class': controlClass,
                     'autoWidth': true,
                     'render': function (data, type, full, meta) {
-                        return `<span class="badge badge-${full.type_badge} mr-2"> ${full.type_name}</span>`;
+                        return `<span style="font-size: 100%" class="badge bg-${full.type_badge} mr-2"> ${full.type_name}</span>`;
                     },
                 });
             } else if (quantityBadge) {
@@ -186,7 +205,7 @@ const _controlUtils = {
                     'class': controlClass,
                     'autoWidth': true,
                     'render': function (data, type, full, meta) {
-                        return `<span class="badge badge-${full.quantity_badge} mr-2"> ${full.quantityStatusName}</span>`;
+                        return `<span style="font-size: 100%" class="badge bg-${full.quantity_badge} mr-2"> ${full.quantityStatusName}</span>`;
                     },
                 });
             } else if (controlIcon) {

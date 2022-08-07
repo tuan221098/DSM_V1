@@ -8,16 +8,14 @@ function initialDataTable() {
         render: function (data, type, row, meta) {
             let html = "";
             html += _buttonUtils.generateButtonByEvent(`loadForm('${row.id}')`, {
-                'icon': categoryConstants.iconEdit,
-                'classButton': 'btn-light-success',
-                'classIcon': 'svg-icon-success',
+                'icon': 'ri-edit-line',
+                'classButton': 'btn-primary',
                 'title': 'Chi tiết',
             });
 
             html += _buttonUtils.generateButtonByEvent(`confirmDelete(event,'${row.id}')`, {
-                'icon': categoryConstants.iconDelete,
-                'classButton': 'btn-light-danger',
-                'classIcon': 'svg-icon-danger',
+                'icon': 'ri-close-line',
+                'classButton': 'btn-danger',
                 'title': 'Xóa',
             });
             return html;
@@ -115,7 +113,7 @@ function confirmDelete(e, id) {
                 url: categoryConstants.destroyUrl.replace("ValId", id),
                 method: 'DELETE',
                 success: function (response) {
-                    _flashUtils.message(response.type, response.message);
+                    _flashUtils.message(response.success, response.message);
                     oTable.draw();
                 }
             });

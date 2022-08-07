@@ -1,24 +1,31 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
-<head><base href="../../../">
-    <title>AG Store - @yield('page_title')</title>
+
+<head>
+
     <meta charset="utf-8" />
+    <title>@yield('page_title') | DSM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="{{ csrf_token() }}" name="csrf-token" />
-    <link rel="shortcut icon" href="{{asset('favicon.ico')}}" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
-    <link rel="stylesheet" href="{{ asset('css/plugins.bundle.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/style.bundle.css') }}">
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
+
+    <link href="{{ asset('css/app.css') }}" id="app-style" rel="stylesheet" type="text/css" />
+
 </head>
-<body id="kt_body" class="bg-body">
-<div class="d-flex flex-column flex-root">
-    @yield('content')
+
+<body class="auth-body-bg">
+<div class="bg-overlay"></div>
+<div class="wrapper-page">
+    <div class="container-fluid p-0">
+        @yield('content')
+    </div>
 </div>
 
-<script src="{{asset('js/plugins.bundle.js')}}"></script>
 <script src="{{ asset('js/app.js') }}"></script>
-<script src="{{asset('js/scripts.bundle.js')}}"></script>
-<script src="{{ asset('js/utils/controlUtil.js') }}"></script>
 <script src="{{ asset('js/utils/flashUtil.js') }}"></script>
+<script src="{{ asset('js/utils/controlUtil.js') }}"></script>
+
 @yield('scripts')
 </body>
 </html>
