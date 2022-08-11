@@ -19,16 +19,6 @@
         <div class="card-body ">
             {!! Form::open(['url'=>route('supplier.search'),'method'=>'POST','id'=>'frmSearch']) !!}
             <div class="row">
-                <div class="col-md-6">
-
-                </div>
-
-                <div class="col-md-6 text-end">
-
-                </div>
-            </div>
-
-            <div class="row">
                 <div class="form-group col-md-3">
                     <div class="col-md-12">
                         {!! Form::text('code_supplier','',['class'=>'code-search form-control form-control-solid','placeholder'=>'Mã nhà cung cấp']) !!}
@@ -44,8 +34,6 @@
                        {!! Form::select('status_search',$statuses,'',['class'=>'status-search form-control form-control-solid form-select','placeholder'=>'Trạng thái'])!!}
                    </div>
                 </div>
-            </div>
-            <div class="app-search">
                 <div class="form-group col-md-3">
                     <div class="col-md-12">
                         <button class="btn btn-primary ">
@@ -54,6 +42,7 @@
                         </button>
                     </div>
                 </div>
+
             </div>
             {!! Form::close() !!}
 

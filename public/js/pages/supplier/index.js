@@ -33,7 +33,7 @@ $(function () {
 
     oTable = _controlUtils.datatablesInit('#frmSearch', '#supplier-grid', actionColumns, null,
         {
-            emptyTable: 'Không tìm thấy sản phẩm theo yêu cầu'
+            emptyTable: 'Không tìm thấy nhà cung cấp theo yêu cầu'
         });
 }
 
