@@ -1,10 +1,18 @@
-//categories
+// supplier
 var oTable = null;
 $(function () {
     initialDataTable();
+
 })
 
-function initialDataTable() {
+ function showModal() {
+     $('#supplierModal').modal('show');
+ }
+
+ function hideModal() {
+     $('#supplierModal').modal('hide');
+ }
+ function initialDataTable() {
     const actionColumns = {
         render: function (data, type, row, meta) {
             let html = "";
@@ -23,7 +31,7 @@ function initialDataTable() {
         }
     };
 
-    oTable = _controlUtils.datatablesInit('#frmSearch', '#category-grid', actionColumns, null,
+    oTable = _controlUtils.datatablesInit('#frmSearch', '#supplier-grid', actionColumns, null,
         {
             emptyTable: 'Không tìm thấy danh mục sản phẩm theo yêu cầu'
         });
@@ -38,27 +46,20 @@ $('.status-search').on('change', function (e) {
     oTable.draw();
 });
 
-function showModal() {
-    $('#categoryModal').modal('show');
-}
-
-function hideModal() {
-    $('#categoryModal').modal('hide');
-}
 
 function loadForm(id) {
     $.ajax({
-        url: categoryConstants.loadFormUrl,
+        url: supplierConstants.loadFormUrl,
         method: 'POST',
         data: {id: id},
         success: function (response) {
-            $('#categoryModal #frmCategory').html(response);
+            $('#supplierModal #frmSupplier').html(response);
             showModal();
         }
     })
 }
 
-$('#frmCategory').validate(validate('#frmCategory'));
+$('#frmSupplier').validate(validate('#frmSupplier'));
 function validate(frm) {
     return {
         onkeyup: false,
@@ -66,29 +67,49 @@ function validate(frm) {
         errorClass: 'text-danger',
         errorElement: 'small',
         rules: {
-            'name': {
+            'code_supplier': {
+                required: true,
+            },
+            'name_supplier': {
                 required: true,
                 maxlength: 191,
+            },
+            'email': {
+                required: true,
+                maxlength: 191,
+            },
+            'phone': {
+                number:true,
             },
             'status': {
                 required: true,
             },
         },
         messages: {
-            'name': {
-                required: 'Tên danh mục là bắt buộc',
-                maxLength: 'Tên danh mục không được quá 191 ký tự',
+            'code_supplier': {
+                required: 'Mã nhà cung cấp là bắt buộc',
+            },
+            'name_supplier': {
+                required: 'Tên nhà cung cấp là bắt buộc',
+                maxlength: 'Tên nhà cung cấp không được quá 191 ký tự',
+            },
+            'email': {
+                required: 'Email là bắt buộc',
+                maxlength: 'Email không được quá 191 ký tự',
+            },
+            'phone': {
+                number: 'Không nhập ký tự',
             },
             'status': {
                 required: 'Trạng thái là bắt buộc',
             }
         },
         submitHandler: function (form) {
-            const id = $(frm).find('#categoryId').val();
-            let router = categoryConstants.storeUrl;
+            const id = $(frm).find('#supplierId').val();
+            let router = supplierConstants.storeUrl;
             let method = 'POST';
             if (id !== '') {
-                router = categoryConstants.updateUrl.replace('ValId', id);
+                router = supplierConstants.updateUrl.replace('ValId', id);
                 method = 'PUT';
             }
 
@@ -111,7 +132,7 @@ function confirmDelete(e, id) {
     Swal.fire(_controlUtils.configSweetDeleteAlert()).then(function (result) {
         if (result.value) {
             $.ajax({
-                url: categoryConstants.destroyUrl.replace("ValId", id),
+                url: supplierConstants.destroyUrl.replace("ValId", id),
                 method: 'DELETE',
                 success: function (response) {
                     _flashUtils.message(response.success, response.message);

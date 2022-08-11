@@ -31,4 +31,8 @@ return [
         'in_active' => 'Chưa kích hoạt',
         'active' => 'Kích hoạt',
     ],
+    'supplier_status'=>[
+        'in_active' => 'Đang giao dịch',
+        'active' => 'Đã hoàn thành',
+    ],
 ];

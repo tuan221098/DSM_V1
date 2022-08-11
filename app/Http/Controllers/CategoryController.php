@@ -46,9 +46,11 @@ class CategoryController extends Controller
                 if ($row->status == config('constants.category_status.active')) {
                     return 'primary';
                 } else if ($row->status == config('constants.category_status.in_active')) {
-                    return 'danger';
+                    return 'info';
                 }
-            })->make(true);
+            })
+            ->rawColumns(['status_name','status_badge'])
+            ->make(true);
     }
 
     public function loadForm(Request $request)

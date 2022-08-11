@@ -25,7 +25,6 @@
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="{{ asset('js/utils/flashUtil.js') }}"></script>
 <script src="{{ asset('js/utils/controlUtil.js') }}"></script>
-
 @yield('scripts')
 </body>
 </html>

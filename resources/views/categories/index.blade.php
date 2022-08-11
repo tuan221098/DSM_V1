@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('page_title',trans('menu.products.category'))
 @section('content')
-
     <div class="card">
         <div class="card-header">
             <div class="row">
@@ -77,10 +76,10 @@
 @section('scripts')
     <script>
         const categoryConstants = {
-            loadFormUrl: '{!! route('categories.loadForm') !!}',
-            storeUrl: '{!! route('categories.store') !!}',
-            updateUrl: '{!! route('categories.update','ValId') !!}',
-            destroyUrl: '{!! route('categories.destroy','ValId') !!}',
+            loadFormUrl: '{!! route("categories.loadForm") !!}',
+            storeUrl: '{!! route("categories.store") !!}',
+            updateUrl: '{!! route("categories.update","ValId") !!}',
+            destroyUrl: '{!! route("categories.destroy","ValId") !!}'
         }
     </script>
     <script src="{{ asset('js/pages/categories/index.js') }}"></script>
