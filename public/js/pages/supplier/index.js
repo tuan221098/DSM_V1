@@ -33,7 +33,7 @@ $(function () {
 
     oTable = _controlUtils.datatablesInit('#frmSearch', '#supplier-grid', actionColumns, null,
         {
-            emptyTable: 'Không tìm thấy danh mục sản phẩm theo yêu cầu'
+            emptyTable: 'Không tìm thấy sản phẩm theo yêu cầu'
         });
 }
 
@@ -77,6 +77,7 @@ function validate(frm) {
             'email': {
                 required: true,
                 maxlength: 191,
+                email:true,
             },
             'phone': {
                 number:true,
@@ -96,6 +97,7 @@ function validate(frm) {
             'email': {
                 required: 'Email là bắt buộc',
                 maxlength: 'Email không được quá 191 ký tự',
+                email:'Emai không hợp lệ',
             },
             'phone': {
                 number: 'Không nhập ký tự',
