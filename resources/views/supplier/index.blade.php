@@ -18,6 +18,16 @@
         </div>
         <div class="card-body ">
                         {!! Form::open(['url'=>route('supplier.search'),'method'=>'POST','id'=>'frmSearch']) !!}
+            <div class="row">
+                <div class="col-md-6">
+
+                </div>
+
+                <div class="col-md-6 text-end">
+
+                </div>
+            </div>
+
                         <div class="app-search">
                             <div class="form-group col-md-3">
                                 <div class="col-md-12">
@@ -31,7 +41,7 @@
                         <div class="row">
                             <div class="form-group col-md-3">
                                 <div class="col-md-12">
-                                    {!! Form::text('code_supplier','',['class'=>'name-search form-control form-control-solid','placeholder'=>'Mã nhà cung cấp']) !!}
+                                    {!! Form::text('code_supplier','',['class'=>'code-search form-control form-control-solid','placeholder'=>'Mã nhà cung cấp']) !!}
                                 </div>
                             </div>
                             <div class="form-group col-md-3">
@@ -41,14 +51,10 @@
                             </div>
                             <div class="form-group col-md-3">
                                 <div class="col-md-12">
-                                    {!! Form::text('email','',['class'=>'name-search form-control form-control-solid','placeholder'=>'	Email']) !!}
+                                    {!! Form::select('status_search',$statuses,'',['class'=>'status-search form-control form-control-solid','placeholder'=>'Trạng thái']) !!}
                                 </div>
                             </div>
-                            <div class="form-group col-md-3">
-                                <div class="col-md-12">
-                                    {!! Form::text('phone','',['class'=>'name-search form-control form-control-solid','placeholder'=>'Số điện thoại']) !!}
-                                </div>
-                            </div>
+
 
                         </div>
                         {!! Form::close() !!}

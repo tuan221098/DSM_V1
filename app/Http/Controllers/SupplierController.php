@@ -26,10 +26,8 @@ class SupplierController extends Controller
                 'name' => trans('menu.products.supplier'),
             ]
         ];
-//        $statuses = $this -> getStatuses();
-//        $statuses = collect($statuses)->prepend('supplier_status');
-//        return view('supplier.index', compact('breadcrumbs', 'statuses'));
-        return view('supplier.index',compact('breadcrumbs'));
+        $statuses = $this -> getStatuses();
+        return view('supplier.index', compact('breadcrumbs', 'statuses'));
     }
 
     //loadFm
@@ -67,14 +65,11 @@ class SupplierController extends Controller
         if ($request->name_supplier) {
             $query = $query->where('name_supplier', 'like', "%$request->name_supplier%");
         }
-        if ($request->email) {
-            $query = $query->where('email', '', "%$request->email%");
-        }
-        if ($request->phone) {
-            $query = $query->where('phone', '', "%$request->phone%");
+        if ($request->status_search != '') {
+            $query = $query->where('status', $request->status_search);
         }
         $data = $query->orderByDesc('created_at')
-            ->select([ 'id','code_supplier','name_supplier','email','phone','status'])->get();
+            ->select([ 'id','code_supplier','email','phone','name_supplier','status'])->get();
         return DataTables::of($data)
             ->addIndexColumn()
             ->addColumn('status_name', function ($row) {
@@ -86,7 +81,9 @@ class SupplierController extends Controller
                 } else if ($row->status == config('constants.supplier_status.in_active')) {
                     return 'danger';
                 }
-            })->make(true);
+            })
+            ->rawColumns(['status_name','status_badge'])
+            ->make(true);
     }
     /**
      * Store a newly created resource in storage.
